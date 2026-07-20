@@ -833,8 +833,11 @@
   var CAL_CACHE_KEY = "vara_ical_cache_v1";
   var MONTHS_AHEAD = 12;
 
-  // ===== Vara pricing + availability feed — refreshed daily by the ops automation =====
-  // priceByDate = nightly base for up to 4 guests (target: 10% below the Airbnb price for that date).
+  // ===== Vara pricing + availability feed =====
+  // priceByDate = nightly base for up to 4 guests. This starting block is a fallback
+  // only — on load the page fetches /api/pricing, which computes the SAME "Model
+  // Recommended v2" price the ops dashboard uses (live calibration + policy), so the
+  // two always match. This static table only shows if that live fetch fails.
   // bookedRanges = [check-in, check-out) blocked from our ledger + Hostex.
   var VARA_BOOKING = {
     generatedAt: "2026-07-11",
@@ -1074,6 +1077,26 @@
       })
       .catch(function(){ if(timer) clearTimeout(timer); throw 0; });
   }
+
+  // Live pricing: fetch the same Model Recommended v2 numbers the ops dashboard
+  // shows, computed fresh server-side each time (no site redeploy needed when
+  // prices move). Falls back to the static VARA_BOOKING.priceByDate table above
+  // if the function is ever unreachable, so guests always see a price.
+  function fetchPricing(){
+    var controller = ('AbortController' in window) ? new AbortController() : null;
+    var opts = controller ? {signal: controller.signal} : {};
+    var timer = controller ? setTimeout(function(){ controller.abort(); }, 8000) : null;
+    return fetch('/api/pricing', opts)
+      .then(function(r){ if(timer) clearTimeout(timer); if(!r.ok) throw 0; return r.json(); })
+      .then(function(data){
+        if(!data || !data.priceByDate) throw 0;
+        VARA_BOOKING.priceByDate = data.priceByDate;
+        VARA_BOOKING.generatedAt = data.generatedAt;
+        if(ci && co) render(); // refresh an already-open date breakdown with live prices
+      })
+      .catch(function(){ if(timer) clearTimeout(timer); /* keep static fallback table */ });
+  }
+  fetchPricing();
 
   fetchFunction()
     .catch(function(){ return fetchProxy(0); })
