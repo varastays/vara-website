@@ -1059,7 +1059,24 @@
       .catch(function(){ if(timer) clearTimeout(timer); return fetchProxy(i+1); });
   }
 
-  fetchProxy(0)
+  // Try our own server-side function first (no CORS gamble, no public relay —
+  // this runs on Netlify's servers via /api/availability). Only fall back to the
+  // public-proxy chain if that's unavailable (e.g. site not on a Git-connected deploy).
+  function fetchFunction(){
+    var controller = ('AbortController' in window) ? new AbortController() : null;
+    var opts = controller ? {signal: controller.signal} : {};
+    var timer = controller ? setTimeout(function(){ controller.abort(); }, 8000) : null;
+    return fetch('/api/availability', opts)
+      .then(function(r){ if(timer) clearTimeout(timer); if(!r.ok) throw 0; return r.text(); })
+      .then(function(t){
+        if(t.indexOf('VEVENT')===-1 && t.indexOf('VCALENDAR')===-1) throw 0;
+        return t;
+      })
+      .catch(function(){ if(timer) clearTimeout(timer); throw 0; });
+  }
+
+  fetchFunction()
+    .catch(function(){ return fetchProxy(0); })
     .then(function(t){
       parseICS(t);
       writeCache(t);
