@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vara — Peaceful 2 BHK Condo in Arpora, North Goa</title>
+<meta name="description" content="Vara — a peaceful 2 BHK poolside condo in the Riviera Foothills, Arpora. Baga & Anjuna in 10 minutes. Book your stay on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand:#F2ECE1; --dusk:#201C15; --terracotta:#A9573C; --terracotta-dk:#8C4630;
+    --mango:#C6A15B; --cream:#FBF9F4; --border:#E4DBC9; --text-light:#847969;
+    --wa:#25D366; --wa-dk:#1da851;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream);font-family:'Jost',sans-serif;color:var(--dusk);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1.1;letter-spacing:-.5px}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .eyebrow{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--terracotta);display:block;margin-bottom:14px}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:'Jost',sans-serif;font-weight:600;font-size:15px;
+       padding:14px 26px;border-radius:100px;cursor:pointer;border:none;transition:transform .15s ease, box-shadow .15s ease;white-space:nowrap}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-wa{background:var(--wa);color:#fff;box-shadow:0 8px 22px rgba(37,211,102,.32)}
+  .btn-wa:hover{background:var(--wa-dk);box-shadow:0 12px 28px rgba(37,211,102,.42)}
+  .btn-ghost{background:transparent;color:var(--dusk);border:1.5px solid var(--border)}
+  .btn-ghost:hover{border-color:var(--terracotta);color:var(--terracotta)}
+  .btn-book{background:var(--dusk);color:var(--cream);letter-spacing:.6px}
+  .btn-book:hover{background:var(--mango);color:var(--dusk);box-shadow:0 14px 30px rgba(198,161,91,.42)}
+  .btn-gold{background:var(--mango);color:#241d12;letter-spacing:.4px;box-shadow:0 10px 26px rgba(198,161,91,.4)}
+  .btn-gold:hover{background:#d4b571;color:#241d12}
+  .btn svg{width:19px;height:19px;flex:none}
+
+  /* Nav */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(251,248,243,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand img{height:38px;width:auto}
+  .brand .name{font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:600;letter-spacing:1px}
+  .brand .sub{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text-light);margin-top:2px}
+  .nav-links{display:flex;align-items:center;gap:30px}
+  .nav-links a.lnk{font-size:14px;font-weight:500;color:var(--text-light)}
+  .nav-links a.lnk:hover{color:var(--terracotta)}
+  .nav .btn{padding:11px 22px;font-size:14px}
+  @media(max-width:820px){.nav-links a.lnk{display:none}}
+
+  /* Hero */
+  .hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;color:#fff;
+        background:linear-gradient(180deg,rgba(44,36,24,.15) 0%,rgba(44,36,24,.25) 45%,rgba(44,36,24,.82) 100%), url('img/pool_hero.jpg') center/cover no-repeat}
+  .hero-in{padding:0 24px 70px;max-width:1120px;margin:0 auto;width:100%}
+  .hero .tag{font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--mango);margin-bottom:18px;display:block}
+  .hero h1{font-size:clamp(46px,8vw,86px);color:#fff;font-weight:500}
+  .hero h1 em{font-style:italic;color:var(--mango)}
+  .hero p.lead{font-size:clamp(17px,2.4vw,21px);max-width:600px;margin:18px 0 30px;color:#f3ece1;font-weight:300}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero-cta .btn-ghost{color:#fff;border-color:rgba(255,255,255,.5)}
+  .hero-cta .btn-ghost:hover{background:rgba(255,255,255,.12);border-color:#fff;color:#fff}
+
+  /* Facts strip */
+  .facts{background:var(--dusk);color:var(--cream)}
+  .facts-in{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;padding:34px 24px;max-width:1120px;margin:0 auto;text-align:center}
+  .fact .n{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--mango);font-weight:500}
+  .fact .l{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#c9bca9;margin-top:3px}
+  @media(max-width:720px){.facts-in{grid-template-columns:repeat(2,1fr);gap:26px 12px}.fact:last-child{grid-column:1/-1}}
+
+  /* Sections */
+  section.sec{padding:84px 0}
+  .sec.alt{background:var(--sand)}
+  .sec-head{max-width:680px;margin-bottom:44px}
+  .sec-head.center{margin:0 auto 48px;text-align:center}
+  .sec-head h2{font-size:clamp(32px,5vw,48px)}
+  .sec-head p{color:var(--text-light);font-size:17px;margin-top:14px}
+  .intro-lead{font-size:clamp(19px,2.6vw,24px);font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--dusk);line-height:1.5;max-width:820px}
+
+  /* Book direct band */
+  .direct{background:linear-gradient(100deg,var(--terracotta),var(--mango))}
+  .direct-in{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 24px;max-width:1120px;margin:0 auto;flex-wrap:wrap}
+  .direct .txt2{color:#fff;max-width:640px}
+  .direct .dtag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;background:rgba(255,255,255,.22);padding:4px 12px;border-radius:100px;margin-bottom:10px}
+  .direct b{display:block;font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3.4vw,30px);font-weight:600;line-height:1.15}
+  .direct p{color:#fff6ec;font-size:15px;margin-top:6px}
+  .direct .btn{background:#fff;color:var(--terracotta-dk);box-shadow:0 8px 22px rgba(44,36,24,.2);flex:none}
+  .direct .btn:hover{background:#fff}
+  @media(max-width:640px){.direct-in{flex-direction:column;align-items:flex-start}}
+
+  /* Spaces */
+  .space{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:56px}
+  .space:last-child{margin-bottom:0}
+  .space.flip .txt{order:2}
+  .space img{width:100%;height:100%;min-height:320px;object-fit:cover;border-radius:14px;box-shadow:0 16px 40px rgba(44,36,24,.14)}
+  .space h3{font-size:30px;margin-bottom:6px}
+  .space .kicker{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--terracotta);font-weight:600;display:block;margin-bottom:12px}
+  .space p{color:var(--text-light);font-size:16px}
+  .space ul{list-style:none;margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+  .space ul li{font-size:13px;background:var(--cream);border:1px solid var(--border);border-radius:100px;padding:6px 14px;color:var(--dusk)}
+  .sec.alt .space ul li{background:#fff}
+  @media(max-width:800px){.space{grid-template-columns:1fr;gap:22px;margin-bottom:44px}.space.flip .txt{order:0}.space img{min-height:260px}}
+
+  /* Gallery grid */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .gcard{border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 10px 26px rgba(44,36,24,.10)}
+  .gcard img{width:100%;height:230px;object-fit:cover}
+  .gcard .cap{padding:14px 18px;font-size:14px;color:var(--text-light)}
+  .gcard .cap b{color:var(--dusk);font-weight:600;display:block;font-size:15px;margin-bottom:2px;font-family:'Cormorant Garamond',serif}
+  @media(max-width:800px){.grid3{grid-template-columns:1fr}}
+
+  /* Gallery */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .gallery button{position:relative;padding:0;border:none;background:none;cursor:pointer;border-radius:12px;overflow:hidden;aspect-ratio:4/3}
+  .gallery img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s ease}
+  .gallery button:hover img{transform:scale(1.07)}
+  .gallery .gcap{position:absolute;left:0;right:0;bottom:0;padding:26px 12px 11px;
+    font-family:'Jost',sans-serif;font-size:12.5px;font-weight:500;line-height:1.3;
+    color:#fff;text-align:left;letter-spacing:.1px;pointer-events:none;
+    background:linear-gradient(to top,rgba(28,22,14,.9) 0%,rgba(28,22,14,.55) 55%,transparent 100%)}
+  @media(max-width:800px){.gallery{grid-template-columns:repeat(2,1fr)}.gallery .gcap{font-size:11.5px;padding:22px 10px 9px}}
+  .lb{position:fixed;inset:0;z-index:100;background:rgba(20,16,10,.93);display:none;align-items:center;justify-content:center;padding:24px}
+  .lb.open{display:flex}
+  .lb img{max-width:92vw;max-height:82vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.55)}
+  .lb .cap{position:absolute;bottom:24px;left:0;right:0;text-align:center;color:#f3ece1;font-size:14px;letter-spacing:.4px}
+  .lb .x{position:absolute;top:18px;right:24px;font-size:32px;line-height:1;color:#fff;background:none;border:none;cursor:pointer}
+  .lb .nv{position:absolute;top:50%;transform:translateY(-50%);font-size:28px;color:#fff;background:rgba(255,255,255,.13);border:none;width:52px;height:52px;border-radius:50%;cursor:pointer}
+  .lb .nv:hover{background:rgba(255,255,255,.26)}
+  .lb .prev{left:18px}.lb .next{right:18px}
+  @media(max-width:600px){.lb .nv{width:42px;height:42px;font-size:23px}}
+
+  /* Local guide */
+  .guide-feature{position:relative;overflow:hidden;background:linear-gradient(120deg,var(--dusk),#3d3320);color:var(--cream);border-radius:16px;padding:40px 38px;margin-bottom:44px}
+  .guide-feature::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 85% 20%,rgba(232,164,74,.22),transparent 60%);pointer-events:none}
+  .guide-feature .gf{position:relative;max-width:640px}
+  .guide-feature .gf-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--mango);margin-bottom:12px}
+  .guide-feature h3{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4vw,36px);font-weight:600;line-height:1.1}
+  .guide-feature p{color:#e4d8c6;font-size:15px;margin-top:12px;line-height:1.6}
+  .guide-tips{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
+  .guide-tips span{font-size:12.5px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);padding:6px 13px;border-radius:100px}
+  .gcat{margin-top:42px}
+  .gcat .ghd{font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:600;margin-bottom:2px}
+  .gcat .gsub{color:var(--text-light);font-size:14px;margin-bottom:20px}
+  .gcards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .gitem{background:var(--cream);border:1px solid var(--border);border-radius:12px;padding:20px 22px}
+  .gitem .gname{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+  .gitem .gname b{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;line-height:1.15}
+  .gitem .grate{font-size:12px;color:var(--terracotta);font-weight:600;white-space:nowrap}
+  .gitem .gloc{display:block;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mango);margin-top:5px;font-weight:600}
+  .gitem p{font-size:13.5px;color:var(--text-light);margin-top:9px;line-height:1.55}
+  .guide-foot{text-align:center;margin-top:44px;padding:28px 24px;border:1px dashed var(--border);border-radius:14px;background:var(--cream)}
+  .guide-foot b{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;display:block;margin-bottom:6px}
+  .guide-foot p{color:var(--text-light);font-size:14.5px;max-width:560px;margin:0 auto}
+  @media(max-width:820px){.gcards{grid-template-columns:1fr}}
+
+  /* Location */
+  .loc{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+  .loc img{width:100%;border-radius:14px;box-shadow:0 16px 40px rgba(44,36,24,.14)}
+  .drive{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}
+  .drive .row{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px dashed var(--border);padding:9px 0}
+  .drive .row span{font-size:15px}
+  .drive .row b{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--terracotta);font-weight:600}
+  @media(max-width:800px){.loc{grid-template-columns:1fr;gap:26px}}
+
+  /* Amenities columns */
+  .amen{columns:3;column-gap:40px}
+  .amen .blk{break-inside:avoid;margin-bottom:26px}
+  .amen h4{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--terracotta);font-weight:600;font-family:'Jost',sans-serif;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+  .amen ul{list-style:none}
+  .amen li{font-size:14.5px;color:var(--dusk);padding:4px 0}
+  @media(max-width:820px){.amen{columns:2}}
+  @media(max-width:520px){.amen{columns:1}}
+
+  /* Rules */
+  .rules{max-width:720px;margin:36px auto 0;background:var(--cream);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+  .sec.alt .rules{background:#fff}
+  .rules .r{display:flex;justify-content:space-between;gap:18px;padding:15px 26px;border-bottom:1px solid var(--border);font-size:15px}
+  .rules .r:last-child{border-bottom:none}
+  .rules .r .k{color:var(--text-light);letter-spacing:1px;text-transform:uppercase;font-size:12px;font-weight:600;padding-top:3px}
+  .rules .r .v{font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;text-align:right}
+
+  /* Final CTA */
+  .cta{background:var(--dusk);color:var(--cream);text-align:center;position:relative;overflow:hidden}
+  .cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(196,96,58,.22),transparent 60%),radial-gradient(ellipse at 20% 90%,rgba(232,164,74,.15),transparent 55%)}
+  .cta .wrap{position:relative;padding:90px 24px}
+  .cta h2{font-size:clamp(34px,6vw,56px);color:var(--cream)}
+  .cta h2 em{font-style:italic;color:var(--mango)}
+  .cta p{color:#d8ccba;max-width:520px;margin:16px auto 30px;font-size:17px}
+  .cta .btn-wa{font-size:16px;padding:16px 34px}
+  .cta .fine{margin-top:18px;font-size:13px;color:#a99a86}
+
+  /* Footer */
+  footer{background:#211b12;color:#c9bca9;padding:44px 24px;text-align:center}
+  footer .fbrand{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--cream);letter-spacing:2px}
+  footer .fsub{font-size:10px;letter-spacing:3px;text-transform:uppercase;margin:6px 0 16px}
+  footer .fcon a{color:var(--mango);font-weight:500}
+  footer .fcon{font-size:14px;line-height:2}
+  footer .copy{margin-top:20px;font-size:12px;color:#7d7060}
+
+  /* Google Map */
+  .mapwrap{margin-top:38px;border-radius:14px;overflow:hidden;box-shadow:0 16px 40px rgba(44,36,24,.14);border:1px solid var(--border)}
+  .mapwrap iframe{display:block;width:100%;height:430px;border:0;filter:saturate(.95)}
+  .map-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:20px}
+  @media(max-width:600px){.mapwrap iframe{height:330px}}
+
+  /* Availability calendar */
+  .calbox{max-width:560px;margin:0 auto;background:#fff;border:1px solid var(--border);border-radius:16px;padding:26px;box-shadow:0 12px 34px rgba(44,36,24,.08)}
+  .calhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+  .calhead .mon{font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:600}
+  .calnav{display:flex;gap:8px}
+  .calnav button{width:38px;height:38px;border-radius:50%;border:1px solid var(--border);background:var(--cream);cursor:pointer;font-size:20px;line-height:1;color:var(--dusk);transition:.15s}
+  .calnav button:hover:not(:disabled){border-color:var(--terracotta);color:var(--terracotta)}
+  .calnav button:disabled{opacity:.3;cursor:not-allowed}
+  .calgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+  .calgrid .dow{text-align:center;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--text-light);font-weight:600;padding:6px 0}
+  .day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:14px;border-radius:9px;position:relative;transition:background .12s,color .12s}
+  .day.empty{visibility:hidden}
+  .day.avail{cursor:pointer}
+  .day.avail:hover{background:var(--sand)}
+  .day.past{color:#cabfad;cursor:not-allowed}
+  .day.booked{color:#c3b39c;cursor:not-allowed;text-decoration:line-through}
+  .day.inrange{background:rgba(196,96,58,.15);color:var(--terracotta-dk);border-radius:0}
+  .day.sel{background:var(--terracotta);color:#fff}
+  .day.sel.start{border-radius:9px 0 0 9px}
+  .day.sel.end{border-radius:0 9px 9px 0}
+  .day.sel.only{border-radius:9px}
+  .callegend{display:flex;gap:20px;justify-content:center;margin-top:20px;flex-wrap:wrap;font-size:13px;color:var(--text-light)}
+  .callegend span{display:inline-flex;align-items:center;gap:7px}
+  .dot{width:13px;height:13px;border-radius:4px;display:inline-block}
+  .dot.a{background:#fff;border:1px solid var(--border)}
+  .dot.b{background:#e9dcca}
+  .dot.s{background:var(--terracotta)}
+  .calstatus{text-align:center;font-size:12.5px;color:var(--text-light);margin-top:16px}
+  .calsummary{margin-top:18px;background:var(--dusk);color:var(--cream);border-radius:12px;padding:16px 20px;display:none;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .calsummary.show{display:flex}
+  .calsummary .dates b{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--mango);display:block;line-height:1.2}
+  .calsummary .dates span{font-size:13px;color:#c9bca9}
+  .calsummary .btn-wa{padding:12px 22px;font-size:14px}  .bkctrls{max-width:560px;margin:0 auto 18px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:center}
+  .gstep{display:flex;align-items:center;gap:12px;border:1px solid var(--border);border-radius:12px;padding:8px 16px;background:#fff}
+  .gstep>span:first-child{font-size:13px;font-weight:600;letter-spacing:.5px}
+  .gstep button{width:30px;height:30px;border-radius:50%;border:1px solid var(--terracotta);background:#fff;color:var(--terracotta);font-size:17px;line-height:1;cursor:pointer}
+  .gstep button:disabled{opacity:.3;cursor:not-allowed}
+  .gstep .gv{min-width:18px;text-align:center;font-weight:700}
+  .gnote{font-size:11.5px;color:var(--text-light);max-width:230px}
+  .calsummary{flex-direction:column;align-items:stretch;text-align:left}
+  .calbreak{width:100%;font-size:13.5px;color:#e8ddc9;margin-top:12px}
+  .calbreak .row{display:flex;justify-content:space-between;gap:10px;margin:5px 0}
+  .calbreak .row.mut{color:#c1b39c;font-size:12.5px}
+  .calbreak .row.disc{color:#8ad9a9;font-weight:600}
+  .calbreak .tot{display:flex;justify-content:space-between;font-weight:700;font-size:17px;color:var(--mango);border-top:1px dashed rgba(255,255,255,.22);margin-top:9px;padding-top:9px}
+  .bkfields{display:flex;gap:10px;width:100%;margin:14px 0 2px;flex-wrap:wrap}
+  .bkfields input{flex:1 1 45%;min-width:140px;padding:10px 12px;border-radius:9px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;font-size:13.5px}
+  .bkfields input::placeholder{color:#c9bca9}
+  .calsummary .btn-wa{width:100%;justify-content:center;margin-top:12px}
+
+  /* Reviews */
+  .rev-top{text-align:center;margin-bottom:38px}
+  .rev-score{font-family:'Cormorant Garamond',serif;font-size:60px;font-weight:600;line-height:1;color:var(--terracotta)}
+  .rev-stars{color:var(--mango);font-size:19px;letter-spacing:4px;margin:8px 0 4px}
+  .rev-sub{color:var(--text-light);font-size:14px}
+  .revgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:920px;margin:0 auto}
+  .revcard{background:#fff;border:1px solid var(--border);border-radius:14px;padding:26px 28px;box-shadow:0 10px 26px rgba(44,36,24,.07)}
+  .revcard .rs{color:var(--mango);font-size:13px;letter-spacing:2px;margin-bottom:12px}
+  .revcard p{font-size:15px;line-height:1.65;color:var(--dusk)}
+  .revcard .who{margin-top:14px;font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--terracotta-dk)}
+  .rev-foot{text-align:center;margin-top:26px;font-size:13px;color:var(--text-light)}
+  @media(max-width:760px){.revgrid{grid-template-columns:1fr}.rev-score{font-size:48px}}
+
+  /* Host */
+  .host{display:grid;grid-template-columns:.85fr 1.15fr;gap:46px;align-items:center}
+  .host h3{font-size:34px;margin-bottom:4px}
+  .host .htag{font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--terracotta);display:block;margin-bottom:12px}
+  .host p{color:var(--text-light);font-size:16px;margin-top:14px;line-height:1.7}
+  .host-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .host-stat{background:#fff;border:1px solid var(--border);border-radius:12px;padding:22px 18px;text-align:center}
+  .host-stat .hn{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--terracotta);font-weight:600;line-height:1}
+  .host-stat .hl{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--text-light);margin-top:6px}
+  @media(max-width:800px){.host{grid-template-columns:1fr;gap:28px}}
+
+  /* Reels */
+  .reels{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1040px;margin:0 auto}
+  .reel{border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--border);box-shadow:0 10px 26px rgba(44,36,24,.09)}
+  .reel iframe{width:100%;height:600px;border:0;display:block}
+  @media(max-width:820px){.reels{grid-template-columns:1fr;max-width:400px}}
+
+  /* Floating WA */
+  .float{position:fixed;right:20px;bottom:20px;z-index:60;background:var(--wa);color:#fff;width:58px;height:58px;border-radius:50%;
+         display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(37,211,102,.45);transition:transform .15s}
+  .float:hover{transform:scale(1.08)}
+  .float svg{width:30px;height:30px}
+</style>
+</head>
+<body>
+<!-- Netlify booking-request form (hidden; captures Book Now submissions & emails the host) -->
+<form name="booking-request" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html" hidden>
+  <input type="text" name="bot-field"><input type="text" name="name"><input type="tel" name="phone">
+  <input type="text" name="checkin"><input type="text" name="checkout"><input type="number" name="nights">
+  <input type="number" name="guests"><input type="text" name="total"><textarea name="summary"></textarea>
+</form>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#top" class="brand">
+      <img src="img/logo.png" alt="Vara logo">
+      <span><span class="name">Vara</span><span class="sub">Arpora · North Goa</span></span>
+    </a>
+    <nav class="nav-links">
+      <a class="lnk" href="#spaces">The Home</a>
+      <a class="lnk" href="#gallery">Gallery</a>
+      <a class="lnk" href="#location">Location</a>
+      <a class="lnk" href="#guide">Guide</a>
+      <a class="lnk" href="#availability">Dates</a>
+      <a class="lnk" href="#reviews">Reviews</a>
+      <a class="btn btn-book" href="#availability">Book Now</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-in">
+    <span class="tag">Poolside · Riviera Foothills · Arpora</span>
+    <h1>Your Goan<br>home, <em>Vara</em></h1>
+    <p class="lead">A peaceful 2 BHK condo in the foothills of North Goa. Wake to hill views, sip coffee by the pool, and reach Baga or Anjuna in ten minutes.</p>
+    <div class="hero-cta">
+      <a class="btn btn-book" href="#availability">Book your stay</a>
+      <a class="btn btn-ghost" href="#spaces">Explore the home</a>
+    </div>
+  </div>
+</section>
+
+<!-- FACTS -->
+<div class="facts">
+  <div class="facts-in">
+    <div class="fact"><div class="n">6</div><div class="l">Guests</div></div>
+    <div class="fact"><div class="n">2</div><div class="l">Bedrooms · King beds</div></div>
+    <div class="fact"><div class="n">2</div><div class="l">Bathrooms</div></div>
+    <div class="fact"><div class="n">✓</div><div class="l">Fully equipped kitchen</div></div>
+    <div class="fact"><div class="n">200</div><div class="l">Mbps Wi-Fi</div></div>
+    <div class="fact"><div class="n">★</div><div class="l">Superhost · Guest Favourite</div></div>
+  </div>
+</div>
+
+<!-- BOOK DIRECT -->
+<div class="direct">
+  <div class="direct-in">
+    <div class="txt2">
+      <span class="dtag">Book direct &amp; save</span>
+      <b>Booking direct means a better rate — no platform service fee.</b>
+      <p>Skip the Airbnb fees. Message your host on WhatsApp for our best direct price and flexible dates.</p>
+    </div>
+    <a class="btn btn-book" href="#availability">Get the direct rate</a>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="sec">
+  <div class="wrap">
+    <span class="eyebrow">Welcome to Vara</span>
+    <p class="intro-lead">Vara is more than a stay — it's your Goan home. This ground-floor 2 BHK sits inside the beautifully landscaped Riviera Foothills complex, opening onto green pathways with the Western Ghats as your backdrop. Calm inside. Buzzing Goa outside.</p>
+  </div>
+</section>
+
+<!-- SPACES -->
+<section class="sec alt" id="spaces">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">The Home</span>
+      <h2>Light-filled spaces, designed for slow days</h2>
+    </div>
+
+    <div class="space">
+      <div class="txt">
+        <span class="kicker">Living Room</span>
+        <h3>The art of doing nothing</h3>
+        <p>A wide, welcoming living room that opens directly onto lush garden pathways — fresh air and greenery every morning, plush sofas and warm lamp glow every evening.</p>
+        <ul><li>55″ Smart TV · OTT ready</li><li>Bluetooth speaker system</li><li>Opens to garden</li><li>Air-conditioned</li></ul>
+      </div>
+      <img src="img/living_hero.jpg" alt="Vara living room">
+    </div>
+
+    <div class="space flip">
+      <div class="txt">
+        <span class="kicker">Master Bedroom</span>
+        <h3>A king bed that commands the room</h3>
+        <p>King bed, attached bathroom, a plush reading lounger and quiet AC — with the foothills just outside the window and a curated spiritual nook to start your day.</p>
+        <ul><li>King bed</li><li>Attached bath</li><li>Reading lounger</li><li>AC</li></ul>
+      </div>
+      <img src="img/master_hero.jpg" alt="Vara master bedroom">
+    </div>
+
+    <div class="space">
+      <div class="txt">
+        <span class="kicker">Second Bedroom</span>
+        <h3>Every bit as comfortable as the master</h3>
+        <p>Another king bed paired with an antique writing desk and dedicated AC — warm lamp glow, tropical palms just outside the window, and the ideal workcation corner.</p>
+        <ul><li>King bed</li><li>Common bath</li><li>Writing desk</li><li>Garden light</li></ul>
+      </div>
+      <img src="img/second_hero.jpg" alt="Vara second bedroom">
+    </div>
+
+    <div class="space flip">
+      <div class="txt">
+        <span class="kicker">Kitchen & Dining</span>
+        <h3>A fully stocked kitchen</h3>
+        <p>Cook a quick breakfast or a proper Goan feast — induction hob, chimney, oven, refrigerator and spotless counters, with dining for six for candlelit evenings and good company.</p>
+        <ul><li>Induction hob · Oven</li><li>Microwave · Fridge</li><li>Full crockery & cutlery</li><li>Dining for 6</li></ul>
+      </div>
+      <img src="img/kitchen_hero.jpg" alt="Vara kitchen and dining">
+    </div>
+  </div>
+</section>
+
+<!-- COMPLEX / POOL -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow">The Complex</span>
+      <h2>Poolside in the foothills</h2>
+      <p>A sparkling shared pool framed by palms, lush landscaped grounds and a gated, secure community — Riviera Foothills.</p>
+    </div>
+    <div class="grid3">
+      <div class="gcard"><img src="img/pool_aerial.jpg" alt="Aerial view of Riviera Foothills"><div class="cap"><b>Landscaped grounds</b>Your home sits at the heart of lush, palm-filled gardens.</div></div>
+      <div class="gcard"><img src="img/view_balcony.jpg" alt="Pool and gardens from the balcony"><div class="cap"><b>Garden & pool views</b>The pool and gardens, yours from the balcony every morning.</div></div>
+      <div class="gcard"><img src="img/gym.jpg" alt="Community gym"><div class="cap"><b>Gym & carrom lounge</b>Fully equipped gym, pool-view library and carrom lounge.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="sec alt" id="gallery">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow">Gallery</span>
+      <h2>A look inside Vara</h2>
+      <p>Tap any photo to take a closer look around your Goan home.</p>
+    </div>
+    <div class="gallery">
+      <button type="button" onclick="openLB(0)"><img src="img/pool_hero.jpg" alt="The shared poolside" loading="lazy"><span class="gcap">The palm-ringed pool, a two-minute stroll from your door</span></button>
+      <button type="button" onclick="openLB(1)"><img src="img/view_balcony.jpg" alt="Garden and pool from the balcony" loading="lazy"><span class="gcap">Wake up to garden &amp; pool views from your own balcony</span></button>
+      <button type="button" onclick="openLB(2)"><img src="img/living_hero.jpg" alt="The living room" loading="lazy"><span class="gcap">A bright, open-plan living room made for lazy Goan afternoons</span></button>
+      <button type="button" onclick="openLB(3)"><img src="img/master_hero.jpg" alt="Master bedroom" loading="lazy"><span class="gcap">Master bedroom — king bed, ensuite bathroom &amp; soft garden light</span></button>
+      <button type="button" onclick="openLB(4)"><img src="img/second_hero.jpg" alt="Second bedroom" loading="lazy"><span class="gcap">Second bedroom — a second king bed with its own work desk</span></button>
+      <button type="button" onclick="openLB(5)"><img src="img/kitchen_hero.jpg" alt="Fully equipped kitchen and dining" loading="lazy"><span class="gcap">A full kitchen and six-seater dining table, ready to cook in</span></button>
+      <button type="button" onclick="openLB(6)"><img src="img/tv.jpg" alt="Living room entertainment" loading="lazy"><span class="gcap">55″ smart TV and sound system for easy movie nights</span></button>
+      <button type="button" onclick="openLB(7)"><img src="img/balcony.jpg" alt="Private balcony corner" loading="lazy"><span class="gcap">A private balcony corner looking out over the gardens</span></button>
+      <button type="button" onclick="openLB(8)"><img src="img/gym.jpg" alt="Community gym" loading="lazy"><span class="gcap">Stay in your routine at the on-site community gym</span></button>
+      <button type="button" onclick="openLB(9)"><img src="img/library.jpg" alt="A cosy reading nook" loading="lazy"><span class="gcap">A cosy corner made for slow reads and afternoon chai</span></button>
+      <button type="button" onclick="openLB(10)"><img src="img/carrom.jpg" alt="Carrom lounge" loading="lazy"><span class="gcap">A carrom &amp; games lounge for unhurried evenings</span></button>
+      <button type="button" onclick="openLB(11)"><img src="img/pool_aerial.jpg" alt="Riviera Foothills from above" loading="lazy"><span class="gcap">Lush, palm-filled grounds at Riviera Foothills</span></button>
+      <button type="button" onclick="openLB(12)"><img src="img/front_door.jpg" alt="Your front door" loading="lazy"><span class="gcap">Your private front door in a gated, secure community</span></button>
+      <button type="button" onclick="openLB(13)"><img src="img/spiritual.jpg" alt="A curated spiritual corner" loading="lazy"><span class="gcap">A quiet spiritual corner to begin the day slowly</span></button>
+      <button type="button" onclick="openLB(14)"><img src="img/laundry.jpg" alt="In-unit washing machine and dryer" loading="lazy"><span class="gcap">In-unit washing machine — pack light, stay longer</span></button>
+      <button type="button" onclick="openLB(15)"><img src="img/study.jpg" alt="A quiet study corner" loading="lazy"><span class="gcap">A calm study corner for work-from-Goa days</span></button>
+      <button type="button" onclick="openLB(16)"><img src="img/living_night.jpg" alt="The living room in the evening" loading="lazy"><span class="gcap">Warm, unwinding evenings under soft lamplight</span></button>
+      <button type="button" onclick="openLB(17)"><img src="img/couple_sunset.jpg" alt="Sundowners on the balcony" loading="lazy"><span class="gcap">Golden-hour sundowners looking over the pool</span></button>
+      <button type="button" onclick="openLB(18)"><img src="img/couple_day.jpg" alt="Morning coffee with a garden view" loading="lazy"><span class="gcap">Slow mornings with coffee and a green garden view</span></button>
+      <button type="button" onclick="openLB(19)"><img src="img/reading.jpg" alt="A quiet afternoon in the living room" loading="lazy"><span class="gcap">An unhurried afternoon curled up indoors</span></button>
+      <button type="button" onclick="openLB(20)"><img src="img/family_sofa.jpg" alt="Family time in the living room" loading="lazy"><span class="gcap">Space for the whole family to gather together</span></button>
+      <button type="button" onclick="openLB(21)"><img src="img/family_dining.jpg" alt="Family meals in the open kitchen" loading="lazy"><span class="gcap">Home-cooked family meals around the dining table</span></button>
+      <button type="button" onclick="openLB(22)"><img src="img/kitchen_cooking.jpg" alt="Cooking on the induction hob" loading="lazy"><span class="gcap">Cook your own Goan feast — induction hob, pans &amp; pressure cookers</span></button>
+      <button type="button" onclick="openLB(23)"><img src="img/kitchen_stock.jpg" alt="A fully stocked spice pantry" loading="lazy"><span class="gcap">A fully stocked pantry — spices, tea &amp; everyday essentials</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="sec" id="location">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Location</span>
+      <h2>North Goa's prime address</h2>
+      <p>No. 1011, Riviera Foothills, Arpora — minutes from the finest beaches, landmarks and restaurants.</p>
+    </div>
+    <div class="loc">
+      <img src="img/location_map.jpg" alt="Map of Vara's location in North Goa">
+      <div class="drive">
+        <div class="row"><span>Baga Beach</span><b>10 min</b></div>
+        <div class="row"><span>Anjuna Beach</span><b>10 min</b></div>
+        <div class="row"><span>Candolim Beach</span><b>15 min</b></div>
+        <div class="row"><span>Vagator Beach</span><b>15 min</b></div>
+        <div class="row"><span>Chapora Fort</span><b>15 min</b></div>
+        <div class="row"><span>Mapusa Town</span><b>15 min</b></div>
+        <div class="row"><span>Tivim Railway</span><b>15 min</b></div>
+        <div class="row"><span>MoPA Airport</span><b>30 min</b></div>
+      </div>
+    </div>
+    <div class="mapwrap">
+      <iframe src="https://www.google.com/maps?q=Riviera%20Foothills%2C%20Arpora%2C%20North%20Goa&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Vara — Riviera Foothills, Arpora location map"></iframe>
+    </div>
+    <div class="map-actions">
+      <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&destination=Riviera+Foothills,+Arpora,+North+Goa" target="_blank" rel="noopener">Get directions</a>
+      <a class="btn btn-wa" href="#" onclick="return openWA(event)">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.5-6c-.2-.1-1.4-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.2.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3A2.9 2.9 0 0 0 6 8.7a5 5 0 0 0 1.1 2.7 11.5 11.5 0 0 0 4.4 3.9c1.6.7 2.2.7 3 .6a2.5 2.5 0 0 0 1.6-1.2 2 2 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3Z"/></svg>
+        Ask for the exact pin
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- LOCAL GUIDE -->
+<section class="sec alt" id="guide">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow">Local Guide</span>
+      <h2>What's around you</h2>
+      <p>A host's handpicked selection — the finest food, beaches, markets and nightlife around Arpora, chosen by someone who calls this neighbourhood home.</p>
+    </div>
+
+    <div class="guide-feature">
+      <div class="gf">
+        <span class="gf-tag">★ Every Saturday · Nov–Apr</span>
+        <h3>Arpora Saturday Night Bazaar</h3>
+        <p>The iconic North Goa night market, minutes from your door. Hundreds of stalls of clothing, jewellery and handicrafts woven together with food courts, cocktail bars and live music past midnight — a festival condensed into a single evening.</p>
+        <div class="guide-tips">
+          <span>Arrive 7–8 PM, peaks by 9</span>
+          <span>Bargaining welcomed</span>
+          <span>Global street food &amp; feni</span>
+          <span>Go by scooter or cab</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="gcat">
+      <div class="ghd">Where to eat</div>
+      <div class="gsub">From single-origin coffee to old-school Goan thalis.</div>
+      <div class="gcards">
+        <div class="gitem"><div class="gname"><b>Maverick &amp; Farmer</b><span class="grate">4.4 ★</span></div><span class="gloc">Coffee · 5 min away</span><p>An exceptional café close to Vara. Outstanding breakfasts — the French toast and single-origin pour-over are the ones to order.</p></div>
+        <div class="gitem"><div class="gname"><b>Kokni Kanteen</b><span class="grate">4.5 ★</span></div><span class="gloc">Goan · Panjim</span><p>A hidden gem for old-school Goan cooking — seafood thalis, pork sorpotel and local specialties in a homely, unhurried setting.</p></div>
+        <div class="gitem"><div class="gname"><b>Maka Zai</b><span class="grate">4.5 ★</span></div><span class="gloc">Goan &amp; Feni cocktails</span><p>Authentic Goan flavours with quiet confidence — fresh seafood, traditional curries and inventive feni cocktails, well away from the tourist trail.</p></div>
+        <div class="gitem"><div class="gname"><b>Fat Fish</b><span class="grate">4.2 ★</span></div><span class="gloc">Seafood</span><p>The Goan seafood restaurant that earns its reputation daily — fresh catches and rich fish curries in a lively, open-air setting.</p></div>
+      </div>
+    </div>
+
+    <div class="gcat">
+      <div class="ghd">Beaches &amp; sights</div>
+      <div class="gsub">Golden sand, cinematic forts and turtle-nesting calm.</div>
+      <div class="gcards">
+        <div class="gitem"><div class="gname"><b>Candolim Beach</b><span class="grate">4.5 ★</span></div><span class="gloc">15 min</span><p>A long golden arc, noticeably quieter than Baga. Excellent shacks, reliable water sports and cinematic sunsets, with Aguada Fort a short walk away.</p></div>
+        <div class="gitem"><div class="gname"><b>Chapora Fort</b><span class="grate">4.4 ★</span></div><span class="gloc">15 min</span><p>A 17th-century Portuguese bastion above Vagator with sweeping Arabian Sea views — most magnificent in the last hour before sunset.</p></div>
+        <div class="gitem"><div class="gname"><b>Morjim Beach</b><span class="grate">4.4 ★</span></div><span class="gloc">25–30 min</span><p>Serene and rarely crowded — a protected Olive Ridley turtle nesting site with yoga retreats, quiet cafés and luminous sunsets.</p></div>
+      </div>
+    </div>
+
+    <div class="gcat">
+      <div class="ghd">Sundowners &amp; beach shacks</div>
+      <div class="gsub">Where to be as the North Goa sun goes down.</div>
+      <div class="gcards">
+        <div class="gitem"><div class="gname"><b>Purple Martini</b><span class="grate">4.5 ★</span></div><span class="gloc">Anjuna cliffside</span><p>Go for a killer beach view — full stop. Signature martinis against one of the most spectacular sunset panoramas in all of Goa.</p></div>
+        <div class="gitem"><div class="gname"><b>Calamari</b><span class="grate">4.3 ★</span></div><span class="gloc">Candolim · Dando beach</span><p>The beach shack perfected — sunbeds, table service to your lounger and live music. Order the butter-garlic calamari and let the day drift.</p></div>
+        <div class="gitem"><div class="gname"><b>Pisco by the Beach</b><span class="grate">4.4 ★</span></div><span class="gloc">Sundowners</span><p>A chic beachside retreat that captures golden hour perfectly — craft cocktails, relaxed elegance and stunning sunset views.</p></div>
+      </div>
+    </div>
+
+    <div class="gcat">
+      <div class="ghd">Evenings out</div>
+      <div class="gsub">Polished drinks, live music and after-midnight energy.</div>
+      <div class="gcards">
+        <div class="gitem"><div class="gname"><b>The Sanctuary</b><span class="grate">4.5 ★</span></div><span class="gloc">Bar &amp; Kitchen · 10 min</span><p>A beautifully curated space with precise cocktails and a stylish yet relaxed atmosphere — right for a polished drink or unhurried dinner.</p></div>
+        <div class="gitem"><div class="gname"><b>Elephant &amp; Co.</b><span class="grate">4.5 ★</span></div><span class="gloc">Anjuna</span><p>A Goa institution balancing lively and laidback — inventive cocktails, the right music and an outdoor vibe that always feels right.</p></div>
+        <div class="gitem"><div class="gname"><b>Titlie</b><span class="grate">4.4 ★</span></div><span class="gloc">Club · after midnight</span><p>One of North Goa's most talked-about clubs — as much art installation as nightlife, immersive and electric once midnight hits.</p></div>
+      </div>
+    </div>
+
+    <div class="guide-foot">
+      <b>And there's plenty more where this came from.</b>
+      <p>Every Vara guest gets Nikhil's full handpicked North Goa guidebook — 25+ spots for food, beaches, markets, nightlife and getting around, with trusted local contacts for cars and scooters.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AVAILABILITY -->
+<section class="sec" id="availability">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow">Availability</span>
+      <h2>Check your dates</h2>
+      <p>Pick your check-in and check-out below, then send them straight to WhatsApp to confirm your booking.</p>
+    </div>
+    <div class="bkctrls">
+      <div class="gstep"><span>Guests</span><button type="button" id="gMinus" aria-label="Fewer guests">&#8211;</button><span class="gv" id="gVal">2</span><button type="button" id="gPlus" aria-label="More guests">+</button></div>
+      <span class="gnote">Up to 4 guests included &middot; &#8377;500/night per extra guest (max 6)</span>
+    </div>
+    <div class="calbox">
+      <div class="calhead">
+        <div class="mon" id="calMon">—</div>
+        <div class="calnav">
+          <button id="calPrev" type="button" aria-label="Previous month">&#8249;</button>
+          <button id="calNext" type="button" aria-label="Next month">&#8250;</button>
+        </div>
+      </div>
+      <div class="calgrid" id="calGrid"></div>
+      <div class="callegend">
+        <span><i class="dot a"></i>Available</span>
+        <span><i class="dot b"></i>Booked</span>
+        <span><i class="dot s"></i>Your dates</span>
+      </div>
+      <div class="calstatus" id="calStatus">Pick your dates — we’ll confirm on WhatsApp.</div>
+      <div class="calsummary" id="calSummary">
+        <div class="dates"><b id="calDates"></b><span id="calNights"></span></div>
+        <div class="calbreak" id="calBreak"></div>
+        <div class="bkfields">
+          <input id="bkName" type="text" placeholder="Your name" autocomplete="name">
+          <input id="bkPhone" type="tel" placeholder="Your WhatsApp number" autocomplete="tel">
+        </div>
+        <button class="btn btn-gold" type="button" onclick="bookWA()">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.5-6c-.2-.1-1.4-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.2.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3A2.9 2.9 0 0 0 6 8.7a5 5 0 0 0 1.1 2.7 11.5 11.5 0 0 0 4.4 3.9c1.6.7 2.2.7 3 .6a2.5 2.5 0 0 0 1.6-1.2 2 2 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3Z"/></svg>
+          Book these dates
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section class="sec alt" id="amenities">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow">What's included</span>
+      <h2>Every amenity at a glance</h2>
+    </div>
+    <div class="amen">
+      <div class="blk"><h4>Bathroom</h4><ul><li>Attached bath — master</li><li>Common bath — second</li><li>Hot shower · Hairdryer</li><li>Shampoo · Body soap</li><li>Towels · Toiletries</li></ul></div>
+      <div class="blk"><h4>Bedroom & Laundry</h4><ul><li>King beds in both rooms</li><li>Cotton linen · Extra pillows</li><li>Room-darkening blinds</li><li>AC in both rooms</li><li>In-unit washer & dryer</li><li>Iron · Drying rack · Safe</li></ul></div>
+      <div class="blk"><h4>Kitchen & Dining</h4><ul><li>Fully equipped kitchen</li><li>Refrigerator · Freezer</li><li>Induction cooker · Oven</li><li>Microwave · Kettle · Toaster</li><li>Blender · Rice cooker</li><li>Crockery · Cutlery · Glasses</li></ul></div>
+      <div class="blk"><h4>Entertainment & Work</h4><ul><li>55″ Smart TV · Speakers</li><li>Bluetooth sound system</li><li>OTT streaming ready</li><li>200 Mbps fibre Wi-Fi</li><li>Power backup inverter</li><li>Dedicated workspace</li></ul></div>
+      <div class="blk"><h4>Outdoor & Facilities</h4><ul><li>Private balcony · Back garden</li><li>Sun loungers · Beach essentials</li><li>Shared pool (9 AM–6 PM)</li><li>Gym · Library · Carrom lounge</li><li>Free covered parking · Lift</li><li>CCTV · Gated complex</li></ul></div>
+      <div class="blk"><h4>Family & Safety</h4><ul><li>Window & corner guards</li><li>Children's play area</li><li>Board games</li><li>Fire extinguisher · First-aid</li><li>Pets welcome</li><li>Long-term stays</li></ul></div>
+    </div>
+
+    <div class="rules">
+      <div class="r"><span class="k">Check-in / out</span><span class="v">After 2 PM · Before 10 AM</span></div>
+      <div class="r"><span class="k">Guests</span><span class="v">Up to 6</span></div>
+      <div class="r"><span class="k">Quiet hours</span><span class="v">11 PM – 6 AM</span></div>
+      <div class="r"><span class="k">Smoking</span><span class="v">Balcony only</span></div>
+      <div class="r"><span class="k">Parties / events</span><span class="v">Not permitted</span></div>
+      <div class="r"><span class="k">Pets</span><span class="v">Welcome</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="sec" id="reviews">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow">Guest Reviews</span>
+      <h2>What our guests say</h2>
+    </div>
+    <div class="rev-top">
+      <div class="rev-score">4.98</div>
+      <div class="rev-stars">★★★★★</div>
+      <div class="rev-sub">Guest Favourite · Superhost — verified reviews from Airbnb</div>
+    </div>
+    <div class="revgrid">
+      <div class="revcard">
+        <div class="rs">★★★★★</div>
+        <p>"Perfect family stay in North Goa — spacious, safe, and everything one needs. The 2BHK is generously spacious, spotlessly clean, beautifully maintained, and exactly as shown in the photos (actually better!). Fully equipped kitchen, strong Wi-Fi, and everything needed for a comfortable stay. Truly a Superhost in every sense."</p>
+        <div class="who">— Zari</div>
+      </div>
+      <div class="revcard">
+        <div class="rs">★★★★★</div>
+        <p>"The apartment was extremely comfortable, beautifully maintained, and had a great aesthetic vibe throughout. Nikhil's hospitality was exceptional — he was incredibly proactive and guided us at every step, even before we had to ask for anything. Highly recommended for anyone looking for a relaxing and hassle-free stay!"</p>
+        <div class="who">— Chintan</div>
+      </div>
+      <div class="revcard">
+        <div class="rs">★★★★★</div>
+        <p>"The place matched exactly the pictures on Airbnb. Nikhil was a great host and responsive instantly for everything. The place has a direct view of the pool with beautiful trees around. No disturbance, just peace. The house has everything you need and you will rightly feel at home."</p>
+        <div class="who">— Shivalika</div>
+      </div>
+      <div class="revcard">
+        <div class="rs">★★★★★</div>
+        <p>"Vara is an extremely amazing property. Nikhil makes sure the guest feels like home. We were highly impressed with the small details the host kept in mind — great quality speakers, a mandir setup, complimentary beers. 10/10 for cleanliness. Location is perfect. Major clubs and beaches are quite nearby."</p>
+        <div class="who">— Twinkle</div>
+      </div>
+    </div>
+    <div class="rev-foot">All reviews verified on Airbnb</div>
+  </div>
+</section>
+
+<!-- HOST -->
+<section class="sec alt" id="host">
+  <div class="wrap">
+    <div class="host">
+      <div class="host-stats">
+        <div class="host-stat"><div class="hn">4.98 ★</div><div class="hl">Guest Rating</div></div>
+        <div class="host-stat"><div class="hn">Superhost</div><div class="hl">Status</div></div>
+        <div class="host-stat"><div class="hn">100%</div><div class="hl">Response Rate</div></div>
+        <div class="host-stat"><div class="hn">&lt; 1 hr</div><div class="hl">Response Time</div></div>
+      </div>
+      <div class="txt">
+        <span class="htag">Your Host</span>
+        <h3>Meet Nikhil</h3>
+        <p>Hi, I'm Nikhil — and Vara is my labour of love. I created it with a clear purpose: a calm, uncluttered stay that feels genuinely homely, where everything works and everything is in its place.</p>
+        <p>I'm based in Delhi but deeply connected to this corner of North Goa. Whether you need a restaurant recommendation, a trusted cab contact or a scooter rental, I'm just a WhatsApp away — and I respond fast. Check-in instructions, a lockbox code and a curated local guide come before you arrive, and I read and respond to every review personally.</p>
+        <a class="btn btn-wa" href="#" onclick="return openWA(event)" style="margin-top:20px">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.5-6c-.2-.1-1.4-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.2.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3A2.9 2.9 0 0 0 6 8.7a5 5 0 0 0 1.1 2.7 11.5 11.5 0 0 0 4.4 3.9c1.6.7 2.2.7 3 .6a2.5 2.5 0 0 0 1.6-1.2 2 2 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3Z"/></svg>
+          Message Nikhil
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REELS -->
+<section class="sec" id="reels">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow">Watch</span>
+      <h2>See Vara in motion</h2>
+      <p>A few reels from the property — the pool, the light and the slow Goan calm.</p>
+    </div>
+    <div class="reels">
+      <div class="reel"><iframe src="https://www.instagram.com/p/DOlFiOVksbT/embed/" loading="lazy" scrolling="no" allowtransparency="true" title="Vara reel"></iframe></div>
+      <div class="reel"><iframe src="https://www.instagram.com/p/DaH55QZJQI4/embed/" loading="lazy" scrolling="no" allowtransparency="true" title="Vara reel"></iframe></div>
+      <div class="reel"><iframe src="https://www.instagram.com/p/DX6En1RseMp/embed/" loading="lazy" scrolling="no" allowtransparency="true" title="Vara reel"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta" id="book">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--mango)">Book your dates</span>
+    <h2>Come stay at <em>Vara</em></h2>
+    <p>Pick your dates on the calendar above and send them to your host Nikhil — he'll confirm availability and share everything you need.</p>
+    <a class="btn btn-book" href="#availability">Check dates &amp; book</a>
+    <div class="fine">Or call / WhatsApp +91 98102 14817 · varagoaairbnb@gmail.com</div>
+    <div class="fine" style="margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12)">
+      Already booked? <a href="https://mellifluous-starship-da6524.netlify.app" target="_blank" rel="noopener" style="color:var(--mango);font-weight:600">Share your arrival details →</a>
+      &nbsp;so we can have everything ready for you.
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fbrand">Vara</div>
+  <div class="fsub">Peaceful 2 BHK · Arpora · North Goa</div>
+  <div class="fcon">
+    No. 1011, Riviera Foothills, Arpora, North Goa, India<br>
+    <a href="#" onclick="return openWA(event)">WhatsApp +91 98102 14817</a> · <a href="mailto:varagoaairbnb@gmail.com">varagoaairbnb@gmail.com</a>
+  </div>
+  <div class="copy">© <span id="yr"></span> Vara · Riviera Foothills, Arpora</div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lb" id="lb" role="dialog" aria-modal="true">
+  <button class="x" type="button" onclick="closeLB()" aria-label="Close">&times;</button>
+  <button class="nv prev" type="button" onclick="stepLB(-1)" aria-label="Previous">&#8249;</button>
+  <img id="lbImg" src="" alt="">
+  <button class="nv next" type="button" onclick="stepLB(1)" aria-label="Next">&#8250;</button>
+  <div class="cap" id="lbCap"></div>
+</div>
+
+<!-- Floating WhatsApp -->
+<a class="float" href="#" onclick="return openWA(event)" aria-label="Book on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.5-6c-.2-.1-1.4-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.2.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3A2.9 2.9 0 0 0 6 8.7a5 5 0 0 0 1.1 2.7 11.5 11.5 0 0 0 4.4 3.9c1.6.7 2.2.7 3 .6a2.5 2.5 0 0 0 1.6-1.2 2 2 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3Z"/></svg>
+</a>
+
+<script>
+  // ===== WhatsApp booking =====
+  // To change the number, edit WA_NUMBER (country code + number, no +, spaces or dashes).
+  var WA_NUMBER = "919810214817";
+  var WA_MESSAGE = "Hi Nikhil! I'd like to book Vara (2 BHK, Riviera Foothills, Arpora). My details:\n\nCheck-in: \nCheck-out: \nGuests: \n\nCould you share availability and rates?";
+  function openWA(e){
+    if(e && e.preventDefault) e.preventDefault();
+    var url = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(WA_MESSAGE);
+    window.open(url, "_blank");
+    return false;
+  }
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // ===== Gallery lightbox =====
+  var GAL = [
+    ["img/pool_hero.jpg","The palm-ringed pool, a two-minute stroll from your door"],
+    ["img/view_balcony.jpg","Wake up to garden & pool views from your own balcony"],
+    ["img/living_hero.jpg","A bright, open-plan living room made for lazy Goan afternoons"],
+    ["img/master_hero.jpg","Master bedroom — king bed, ensuite bathroom & soft garden light"],
+    ["img/second_hero.jpg","Second bedroom — a second king bed with its own work desk"],
+    ["img/kitchen_hero.jpg","A full kitchen and six-seater dining table, ready to cook in"],
+    ["img/tv.jpg","55″ smart TV and sound system for easy movie nights"],
+    ["img/balcony.jpg","A private balcony corner looking out over the gardens"],
+    ["img/gym.jpg","Stay in your routine at the on-site community gym"],
+    ["img/library.jpg","A cosy corner made for slow reads and afternoon chai"],
+    ["img/carrom.jpg","A carrom & games lounge for unhurried evenings"],
+    ["img/pool_aerial.jpg","Lush, palm-filled grounds at Riviera Foothills"],
+    ["img/front_door.jpg","Your private front door in a gated, secure community"],
+    ["img/spiritual.jpg","A quiet spiritual corner to begin the day slowly"],
+    ["img/laundry.jpg","In-unit washing machine — pack light, stay longer"],
+    ["img/study.jpg","A calm study corner for work-from-Goa days"],
+    ["img/living_night.jpg","Warm, unwinding evenings under soft lamplight"],
+    ["img/couple_sunset.jpg","Golden-hour sundowners looking over the pool"],
+    ["img/couple_day.jpg","Slow mornings with coffee and a green garden view"],
+    ["img/reading.jpg","An unhurried afternoon curled up indoors"],
+    ["img/family_sofa.jpg","Space for the whole family to gather together"],
+    ["img/family_dining.jpg","Home-cooked family meals around the dining table"],
+    ["img/kitchen_cooking.jpg","Cook your own Goan feast — induction hob, pans & pressure cookers"],
+    ["img/kitchen_stock.jpg","A fully stocked pantry — spices, tea & everyday essentials"]
+  ];
+  var gi = 0;
+  var lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg'), lbCap = document.getElementById('lbCap');
+  function showLB(){ lbImg.src = GAL[gi][0]; lbImg.alt = GAL[gi][1]; lbCap.textContent = GAL[gi][1]; }
+  function openLB(i){ gi = i; showLB(); lb.classList.add('open'); document.body.style.overflow='hidden'; }
+  function stepLB(d){ gi = (gi + d + GAL.length) % GAL.length; showLB(); }
+  function closeLB(){ lb.classList.remove('open'); document.body.style.overflow=''; }
+  lb.addEventListener('click', function(e){ if(e.target === lb) closeLB(); });
+  document.addEventListener('keydown', function(e){
+    if(!lb.classList.contains('open')) return;
+    if(e.key === 'Escape') closeLB();
+    else if(e.key === 'ArrowLeft') stepLB(-1);
+    else if(e.key === 'ArrowRight') stepLB(1);
+  });
+
+  // ===== Availability calendar (auto-syncs with your Airbnb calendar) =====
+  // 1. In Airbnb: Listing → Calendar → Availability → "Connect to another website" →
+  //    "Export Calendar" and copy the link (ends in .ics).
+  // 2. Paste that link between the quotes below.
+  var AIRBNB_ICAL_URL = "https://www.airbnb.co.in/calendar/ical/1458594287121129153.ics?t=c5800038f27447908e1f73a96fe96918";
+  // Airbnb blocks direct browser reads of that link (CORS), so this is fetched through
+  // a public relay. Those relays have no uptime guarantee, so CAL_PROXIES tries a short
+  // list of them in order and falls back to the last successfully-synced calendar
+  // (cached in the browser) if every relay is down, instead of ever silently showing
+  // every date as available. See netlify/functions/availability.mts + HOW-TO-PUBLISH.md
+  // for a more solid server-side version of this, available if you connect this site to
+  // GitHub for deploys instead of drag-and-drop (drag-and-drop can't run that function).
+  var CAL_PROXIES = [
+    { url: "https://r.jina.ai/", encode: false, unwrap: true },
+    { url: "https://api.allorigins.win/raw?url=", encode: true },
+    { url: "https://api.codetabs.com/v1/proxy?quest=", encode: true }
+  ];
+  var CAL_CACHE_KEY = "vara_ical_cache_v1";
+  var MONTHS_AHEAD = 12;
+
+  // ===== Vara pricing + availability feed — refreshed daily by the ops automation =====
+  // priceByDate = nightly base for up to 4 guests (target: 10% below the Airbnb price for that date).
+  // bookedRanges = [check-in, check-out) blocked from our ledger + Hostex.
+  var VARA_BOOKING = {
+    generatedAt: "2026-07-11",
+    policy: { baseGuests:4, extraGuestPerNight:500, cleaningPer2Nights:300, maxGuests:6, directDiscountPct:0.10 },
+    priceByDate: {
+    "2026-07-12":4872,"2026-07-13":4872,"2026-07-14":4872,"2026-07-15":4872,"2026-07-16":4872,"2026-07-17":5163,"2026-07-18":5163,"2026-07-19":4872,
+    "2026-07-20":4872,"2026-07-21":4872,"2026-07-22":4872,"2026-07-23":4872,"2026-07-24":5163,"2026-07-25":5163,"2026-07-26":4872,"2026-07-27":4872,
+    "2026-07-28":4872,"2026-07-29":4872,"2026-07-30":4872,"2026-07-31":5163,"2026-08-01":5163,"2026-08-02":4872,"2026-08-03":4872,"2026-08-04":4872,
+    "2026-08-05":4872,"2026-08-06":4872,"2026-08-07":5163,"2026-08-08":5163,"2026-08-09":4872,"2026-08-10":4872,"2026-08-11":4872,"2026-08-12":4872,
+    "2026-08-13":4872,"2026-08-14":6025,"2026-08-15":6025,"2026-08-16":6025,"2026-08-17":4872,"2026-08-18":4872,"2026-08-19":4872,"2026-08-20":4872,
+    "2026-08-21":5163,"2026-08-22":5163,"2026-08-23":4872,"2026-08-24":4872,"2026-08-25":6025,"2026-08-26":4872,"2026-08-27":4872,"2026-08-28":5163,
+    "2026-08-29":5163,"2026-08-30":4872,"2026-08-31":4872,"2026-09-01":4872,"2026-09-02":4872,"2026-09-03":4872,"2026-09-04":5163,"2026-09-05":5163,
+    "2026-09-06":4872,"2026-09-07":4872,"2026-09-08":4872,"2026-09-09":4872,"2026-09-10":4872,"2026-09-11":5163,"2026-09-12":5163,"2026-09-13":4872,
+    "2026-09-14":4872,"2026-09-15":4872,"2026-09-16":4872,"2026-09-17":4872,"2026-09-18":5163,"2026-09-19":5163,"2026-09-20":4872,"2026-09-21":4872,
+    "2026-09-22":4872,"2026-09-23":4872,"2026-09-24":4872,"2026-09-25":5163,"2026-09-26":5163,"2026-09-27":4872,"2026-09-28":4872,"2026-09-29":4872,
+    "2026-09-30":4872,"2026-10-01":4872,"2026-10-02":5163,"2026-10-03":5163,"2026-10-04":4872,"2026-10-05":4872,"2026-10-06":4872,"2026-10-07":4872,
+    "2026-10-08":4872,"2026-10-09":5163,"2026-10-10":5163,"2026-10-11":4872,"2026-10-12":4872,"2026-10-13":4872,"2026-10-14":4872,"2026-10-15":4872,
+    "2026-10-16":5163,"2026-10-17":5163,"2026-10-18":4872,"2026-10-19":4872,"2026-10-20":4872,"2026-10-21":4872,"2026-10-22":4872,"2026-10-23":5163,
+    "2026-10-24":5163,"2026-10-25":4872,"2026-10-26":4872,"2026-10-27":4872,"2026-10-28":4872,"2026-10-29":4872,"2026-10-30":5163,"2026-10-31":5163,
+    "2026-11-01":6411,"2026-11-02":6411,"2026-11-03":6411,"2026-11-04":6411,"2026-11-05":6411,"2026-11-06":6794,"2026-11-07":6794,"2026-11-08":6411,
+    "2026-11-09":6411,"2026-11-10":6411,"2026-11-11":6411,"2026-11-12":6411,"2026-11-13":6794,"2026-11-14":6794,"2026-11-15":6411,"2026-11-16":6411,
+    "2026-11-17":6411,"2026-11-18":6411,"2026-11-19":6411,"2026-11-20":6794,"2026-11-21":6794,"2026-11-22":6411,"2026-11-23":6411,"2026-11-24":6411,
+    "2026-11-25":6411,"2026-11-26":6411,"2026-11-27":6794,"2026-11-28":6794,"2026-11-29":6411,"2026-11-30":6411,"2026-12-01":6411,"2026-12-02":6411,
+    "2026-12-03":6411,"2026-12-04":6794,"2026-12-05":6794,"2026-12-06":6411,"2026-12-07":6411,"2026-12-08":6411
+  },
+    bookedRanges: [["2026-07-16","2026-07-19"],["2026-07-26","2026-07-31"]]
+  };
+  var POL = VARA_BOOKING.policy;
+  var guests = 2;
+  function money(n){ return "\u20B9" + Math.round(n).toLocaleString('en-IN'); }
+  function priceFor(d){ return VARA_BOOKING.priceByDate[key(d)] || null; }
+
+  var booked = new Set();
+  VARA_BOOKING.bookedRanges.forEach(function(r){
+    var a = new Date(r[0]), b = new Date(r[1]);
+    for(var d=new Date(a); d<b; d.setDate(d.getDate()+1)) booked.add(key(d));
+  });
+  var today = new Date(); today.setHours(0,0,0,0);
+  var view = new Date(today.getFullYear(), today.getMonth(), 1);
+  var maxView = new Date(today.getFullYear(), today.getMonth() + MONTHS_AHEAD, 1);
+  var ci = null, co = null;
+
+  var elGrid = document.getElementById('calGrid');
+  var elMon = document.getElementById('calMon');
+  var elPrev = document.getElementById('calPrev');
+  var elNext = document.getElementById('calNext');
+  var elStatus = document.getElementById('calStatus');
+  var elSummary = document.getElementById('calSummary');
+  var elDates = document.getElementById('calDates');
+  var elNights = document.getElementById('calNights');
+
+  function key(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+  function fmt(d){ return d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}); }
+  function sameMonth(a,b){ return a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth(); }
+
+  function parseICS(text){
+    var parts = text.split('BEGIN:VEVENT');
+    for(var i=1;i<parts.length;i++){
+      var s = parts[i].match(/DTSTART[^:]*:(\d{8})/);
+      var e = parts[i].match(/DTEND[^:]*:(\d{8})/);
+      if(!s) continue;
+      var sd = new Date(+s[1].slice(0,4), +s[1].slice(4,6)-1, +s[1].slice(6,8));
+      var ed = e ? new Date(+e[1].slice(0,4), +e[1].slice(4,6)-1, +e[1].slice(6,8))
+                 : new Date(sd.getTime()+86400000);
+      for(var d=new Date(sd); d<ed; d.setDate(d.getDate()+1)) booked.add(key(d));
+    }
+  }
+
+  function rangeClear(a,b){ // true if no booked night in [a, b)
+    for(var d=new Date(a); d<b; d.setDate(d.getDate()+1)) if(booked.has(key(d))) return false;
+    return true;
+  }
+
+  function pick(d){
+    if(!ci || co){ ci = d; co = null; }
+    else if(d <= ci){ ci = d; co = null; }
+    else if(rangeClear(ci, d)){ co = d; }
+    else { ci = d; co = null; }
+    render();
+  }
+
+  function render(){
+    elMon.textContent = view.toLocaleDateString('en-US',{month:'long',year:'numeric'});
+    elPrev.disabled = sameMonth(view, today);
+    elNext.disabled = sameMonth(view, maxView);
+    var html = ['Su','Mo','Tu','We','Th','Fr','Sa'].map(function(x){return '<div class="dow">'+x+'</div>';}).join('');
+    var first = new Date(view.getFullYear(), view.getMonth(), 1);
+    var start = first.getDay();
+    var dim = new Date(view.getFullYear(), view.getMonth()+1, 0).getDate();
+    for(var b=0;b<start;b++) html += '<div class="day empty"></div>';
+    for(var n=1;n<=dim;n++){
+      var d = new Date(view.getFullYear(), view.getMonth(), n);
+      var cls = 'day', k = key(d);
+      if(d < today) cls += ' past';
+      else if(booked.has(k)) cls += ' booked';
+      else cls += ' avail';
+      if(ci && co){
+        if(d.getTime()===ci.getTime()) cls += ' sel start';
+        else if(d.getTime()===co.getTime()) cls += ' sel end';
+        else if(d>ci && d<co) cls += ' inrange';
+      } else if(ci && d.getTime()===ci.getTime()) cls += ' sel only';
+      html += '<div class="'+cls+'" data-k="'+k+'">'+n+'</div>';
+    }
+    elGrid.innerHTML = html;
+    // summary
+    if(ci && co){
+      var nights = Math.round((co-ci)/86400000);
+      elDates.textContent = fmt(ci)+'  →  '+fmt(co);
+      elNights.textContent = nights + (nights===1?' night':' nights');
+      renderBreak(nights);
+      elSummary.classList.add('show');
+    } else {
+      elSummary.classList.remove('show');
+    }
+  }
+
+  function nightsList(a,b){ var o=[]; for(var d=new Date(a); d<b; d.setDate(d.getDate()+1)) o.push(new Date(d)); return o; }
+  function renderBreak(nights){
+    var el = document.getElementById('calBreak'); if(!el) return;
+    var list = nightsList(ci,co), base=0, have=true;
+    list.forEach(function(d){ var p=priceFor(d); if(p==null){ have=false; } else base+=p; });
+    var extra = Math.max(0, guests-POL.baseGuests)*POL.extraGuestPerNight*nights;
+    var clean = Math.ceil(nights/2)*POL.cleaningPer2Nights;
+    var accommodation = base+extra+clean;
+    var discount = Math.round(accommodation*POL.directDiscountPct);
+    var total = accommodation-discount;
+    if(!have){ el.innerHTML = '<div class="row">Rates for these dates available on request \u2014 send us your dates below.</div>'; el.dataset.total=''; return; }
+    var h = '<div class="row"><span>Accommodation charges</span><span>'+money(accommodation)+'</span></div>';
+    h += '<div class="row disc"><span>Direct booking discount (10%)</span><span>−'+money(discount)+'</span></div>';
+    h += '<div class="tot"><span>Total</span><span>'+money(total)+'</span></div>';
+    el.innerHTML = h; el.dataset.total = total; el.dataset.discount = discount;
+  }
+
+  function bookWA(){
+    if(!(ci && co)){ window.open("https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(WA_MESSAGE), "_blank"); return; }
+    var nights = Math.round((co-ci)/86400000);
+    var nEl=document.getElementById('bkName'), pEl=document.getElementById('bkPhone'), bEl=document.getElementById('calBreak');
+    var name = nEl && nEl.value ? nEl.value.trim() : '';
+    var phone = pEl && pEl.value ? pEl.value.trim() : '';
+    var total = bEl ? bEl.dataset.total : '';
+    var msg = "Hi Nikhil! I'd like to book Vara (2 BHK, Riviera Foothills, Arpora)."
+        + (name ? "\n\nName: "+name : "\n")
+        + (phone ? "\nPhone: "+phone : "")
+        + "\nCheck-in: "+fmt(ci)+"\nCheck-out: "+fmt(co)+"\nNights: "+nights+"\nGuests: "+guests
+        + (total ? "\nEstimated total: "+money(total)+" (incl. 10% direct discount)" : "")
+        + "\n\nPlease confirm availability.";
+    try {
+      var data = {'form-name':'booking-request', name:name, phone:phone, checkin:fmt(ci), checkout:fmt(co), nights:nights, guests:guests, total:(total||''), summary:msg};
+      fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'},
+        body:Object.keys(data).map(function(k){return encodeURIComponent(k)+'='+encodeURIComponent(data[k]);}).join('&')});
+    } catch(e){}
+    window.open("https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(msg), "_blank");
+  }
+
+  elGrid.addEventListener('click', function(ev){
+    var cell = ev.target.closest('.day.avail');
+    if(!cell) return;
+    var p = cell.getAttribute('data-k').split('-');
+    pick(new Date(+p[0], +p[1]-1, +p[2]));
+  });
+  elPrev.addEventListener('click', function(){ if(!sameMonth(view,today)){ view.setMonth(view.getMonth()-1); render(); } });
+  elNext.addEventListener('click', function(){ if(!sameMonth(view,maxView)){ view.setMonth(view.getMonth()+1); render(); } });
+
+  render();
+
+  // Guest selector
+  var gVal = document.getElementById('gVal');
+  function setG(delta){
+    guests = Math.min(POL.maxGuests, Math.max(1, guests+delta));
+    gVal.textContent = guests;
+    document.getElementById('gMinus').disabled = guests<=1;
+    document.getElementById('gPlus').disabled = guests>=POL.maxGuests;
+    if(ci && co) render();
+  }
+  document.getElementById('gMinus').addEventListener('click', function(){ setG(-1); });
+  document.getElementById('gPlus').addEventListener('click', function(){ setG(1); });
+  setG(0);
+
+  function timeAgo(ts){
+    var mins = Math.round((Date.now()-ts)/60000);
+    if(mins < 1) return 'just now';
+    if(mins < 60) return mins + ' min ago';
+    var hrs = Math.round(mins/60);
+    if(hrs < 24) return hrs + (hrs===1?' hour ago':' hours ago');
+    var days = Math.round(hrs/24);
+    return days + (days===1?' day ago':' days ago');
+  }
+
+  function readCache(){
+    try{
+      var raw = localStorage.getItem(CAL_CACHE_KEY);
+      if(!raw) return null;
+      var obj = JSON.parse(raw);
+      if(obj && obj.text && obj.ts) return obj;
+    }catch(e){}
+    return null;
+  }
+  function writeCache(text){
+    try{ localStorage.setItem(CAL_CACHE_KEY, JSON.stringify({text:text, ts:Date.now()})); }catch(e){}
+  }
+
+  function fetchProxy(i){
+    if(i >= CAL_PROXIES.length) return Promise.reject(0);
+    var p = CAL_PROXIES[i];
+    var url = p.url + (p.encode ? encodeURIComponent(AIRBNB_ICAL_URL) : AIRBNB_ICAL_URL);
+    var controller = ('AbortController' in window) ? new AbortController() : null;
+    var opts = controller ? {signal: controller.signal} : {};
+    var timer = controller ? setTimeout(function(){ controller.abort(); }, 8000) : null;
+    return fetch(url, opts)
+      .then(function(r){ if(timer) clearTimeout(timer); if(!r.ok) throw 0; return r.text(); })
+      .then(function(t){
+        // r.jina.ai wraps the fetched content with its own "Markdown Content:" header —
+        // strip that wrapper to get back to plain .ics text.
+        if(p.unwrap){
+          var marker = 'Markdown Content:';
+          var idx = t.indexOf(marker);
+          if(idx !== -1) t = t.slice(idx + marker.length).trim();
+        }
+        if(t.indexOf('VEVENT')===-1 && t.indexOf('VCALENDAR')===-1) throw 0;
+        return t;
+      })
+      .catch(function(){ if(timer) clearTimeout(timer); return fetchProxy(i+1); });
+  }
+
+  fetchProxy(0)
+    .then(function(t){
+      parseICS(t);
+      writeCache(t);
+      elStatus.textContent = '✓ Live availability — synced with our booking calendar.';
+      render();
+    })
+    .catch(function(){
+      var cached = readCache();
+      if(cached){
+        parseICS(cached.text);
+        elStatus.textContent = '✓ Availability synced ' + timeAgo(cached.ts) + ' (couldn’t refresh just now — showing last known dates).';
+        render();
+      } else {
+        elStatus.textContent = 'Pick your dates — we’ll confirm availability on WhatsApp.';
+      }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vara — Details Received</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #F5F0E8; --dusk: #2C2418; --terracotta: #C4603A;
+    --mango: #E8A44A; --cream: #FBF8F3; --border: #DDD5C4; --text-light: #7A6E60;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--sand); font-family: 'DM Sans', sans-serif; color: var(--dusk); min-height: 100vh; }
+  .header { background: var(--dusk); padding: 48px 32px 40px; text-align: center; position: relative; overflow: hidden; }
+  .header::before { content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(196,96,58,0.18) 0%, transparent 65%),
+                radial-gradient(ellipse at 20% 80%, rgba(232,164,74,0.12) 0%, transparent 55%);
+    pointer-events: none; }
+  .property-tag { font-size: 10px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--mango); margin-bottom: 12px; display: block; }
+  .header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(42px, 8vw, 64px); font-weight: 400; color: #FBF8F3; line-height: 1; letter-spacing: -1px; }
+  .header h1 em { font-style: italic; color: var(--mango); }
+  .wave { display: block; width: 100%; height: 32px; background: var(--sand); clip-path: ellipse(55% 100% at 50% 100%); margin-top: -1px; }
+  .wrap { max-width: 560px; margin: 0 auto; padding: 30px 20px 60px; text-align: center; }
+  .card { background: var(--cream); border: 1px solid var(--border); border-radius: 12px; padding: 40px 32px; border-top: 4px solid var(--terracotta); }
+  .tick { font-size: 46px; margin-bottom: 14px; }
+  .card h2 { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 500; margin-bottom: 12px; }
+  .card p { font-size: 14px; line-height: 1.8; color: var(--text-light); }
+  .card p strong { color: var(--dusk); font-weight: 500; }
+</style>
+</head>
+<body>
+<header class="header">
+  <span class="property-tag">Arpora · North Goa · Riviera Foothills</span>
+  <h1><em>Vara</em></h1>
+</header>
+<span class="wave"></span>
+<div class="wrap">
+  <div class="card">
+    <div class="tick">🌴</div>
+    <h2>Thank you — we've got your details!</h2>
+    <p>Your host <strong>Nikhil</strong> has received your arrival information and will be in touch on WhatsApp with your check-in instructions.</p>
+    <p style="margin-top:14px">We look forward to welcoming you to <strong>Vara</strong>. Safe travels!</p>
+  </div>
+</div>
+</body>
+</html>
