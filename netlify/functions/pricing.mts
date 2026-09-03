@@ -4,14 +4,54 @@ import type { Context, Config } from "@netlify/functions";
 // request so the site always shows the same engine the ops dashboard uses, without
 // ever needing a site redeploy when prices move.
 //
-// Two pieces of live data feed the calculation:
-//  1. Learned calibration (weekday/weekend/longWeekend multipliers) — read from the
-//     ops dashboard's PRICING_SNAPSHOT, which the daily ops automation keeps current.
-//  2. Vara's own booked nights (for the orphan-gap discount) — read straight from the
-//     same Airbnb .ics feed the availability function uses.
-// Everything else (base price, floor/ceiling, seasonal + night-type multipliers,
-// holiday windows, orphan-gap rule) is the same deterministic policy the dashboard
-// uses, copied here so this function has no other dependencies.
+// ─────────────────────────────────────────────────────────────────────────────
+// FIXED 2026-08-17. Before this date the endpoint was quoting ~19.5% BELOW Model
+// Recommended on 45 of the next 49 nights (mean −Rs1,241/night), and ~28% below
+// once the 10% direct discount on the page was applied on top. Five separate
+// causes, all repaired here — do not undo any of them without reading why:
+//
+//  1. CALIBRATION WAS SILENTLY DISCARDED. The old code read
+//     `buckets[bucket].calib`, but PRICING_SNAPSHOT.calibration.buckets is a map
+//     of PLAIN NUMBERS ({"weekday":1.2112,...}) — that shape is mandated by the
+//     ops task file. So `.calib` was `undefined`, the typeof check failed, and the
+//     factor silently fell back to 1.0 while the endpoint still reported
+//     calibrationSource:"live" because the fetch itself had succeeded. Costing ~21%.
+//     readCalib() below now accepts BOTH shapes so neither side can break it again.
+//  2. FLOOR WAS STALE. 4672 -> 5000 (booker-paid floor, changed 2026-07-30). In the
+//     monsoon months the seasonal base falls under the floor, so the floor IS the
+//     price on most weekday nights — this one mattered a lot.
+//  3. STALE CALIBRATION SOURCE. The dashboard this reads is deliberately not
+//     redeployed, so it was serving a 2026-08-05 snapshot. We now carry an embedded
+//     calibration stamped with its own date and use whichever source is NEWER, so a
+//     stale published dashboard can never drag prices backwards.
+//  4. HOLIDAY LIST HAD DIVERGED. The old hardcoded copy still contained Ganesh
+//     Chaturthi (deliberately REMOVED from the model as a stay-home festival — it
+//     was adding a phantom +35% to 12-15 Sep) and was MISSING Janmashtami and
+//     Dussehra entirely. We now parse HOLIDAY_WINDOWS out of the dashboard when it
+//     is newer, and otherwise use the embedded copy synced 2026-08-17.
+//  5. ORPHAN DISCOUNT REMOVED. Nikhil, 2026-08-09: "dont add in pricing discount,
+//     it will be done on airbnb". Model Recommended is the UNDISCOUNTED rate for
+//     every night. A discount baked in here would also mean the direct site
+//     under-quoting against the very channel it is meant to beat.
+//
+//  6. OCTOBER WAS STILL PRICED AS SHOULDER + NO ANNUAL ESCALATION (found 2026-08-20,
+//     during deploy prep — the 2026-08-17 pass did not catch these). Two leftovers
+//     from the PRE-v5 policy, both verified against the dashboard's own rawPolicy():
+//       (a) seasonal[9] (October) was 0.75. The v5 policy of 2026-07-30 folded
+//           October into the Oct-Feb peak season at 1.0. Every October night was
+//           therefore quoted ~19.5% BELOW Model Recommended (Rs1,358-1,962/night) —
+//           the very same signature, and very nearly the same magnitude, as the
+//           original bug this file was written to fix.
+//       (b) The 6%/yr escalation on base AND floor (also v5, from 2026-07-30) was
+//           absent. The dashboard clamps at floor*escFactor(d); this clamped at a
+//           flat floor, costing a further ~1.1-1.3% and growing with the horizon.
+//     With both repaired the endpoint reproduces the dashboard's Model Recommended
+//     EXACTLY on all 60 verified nights. Do not "simplify" escFactor away.
+//
+// NOTE the page applies its own 10% direct-booking discount (VARA_BOOKING.policy
+// .directDiscountPct) on top of whatever this returns. That is deliberate and is
+// left alone — but it is why this endpoint must return the CLEAN model rate.
+// ─────────────────────────────────────────────────────────────────────────────
 
 const DASHBOARD_URL = "https://vara-dashboard.netlify.app/";
 const AIRBNB_ICAL_URL =
@@ -20,23 +60,50 @@ const DAYS_AHEAD = 270;
 
 const PP = {
   base: 6148,
-  floor: 4672,
+  floor: 5000,
   ceiling: 25000,
   weekendMult: 1.15,
   longWeekendMult: 1.35,
-  orphanDiscount: 0.90,
-  // Keyed by JS getMonth() (0=Jan): Peak Nov/Dec/Jan/Feb, Shoulder Oct/Mar,
+  // v5 policy, 2026-07-30: base and floor both escalate 6%/yr from that date.
+  annualEscalation: 0.06,
+  escalateFrom: "2026-07-30",
+  // Keyed by JS getMonth() (0=Jan): Peak OCT/Nov/Dec/Jan/Feb, Shoulder Mar,
   // Shoulder-low Apr/May, Off/Monsoon Jun-Sep.
-  seasonal: { 10: 1, 11: 1, 0: 1, 1: 1, 9: 0.75, 2: 0.75, 3: 0.65, 4: 0.65, 5: 0.55, 6: 0.55, 7: 0.55, 8: 0.55 } as Record<number, number>,
+  // NOTE month 9 (October) is 1.0, NOT 0.75 — see fix #6 in the header.
+  seasonal: { 9: 1, 10: 1, 11: 1, 0: 1, 1: 1, 2: 0.75, 3: 0.65, 4: 0.65, 5: 0.55, 6: 0.55, 7: 0.55, 8: 0.55 } as Record<number, number>,
 };
 
-// Mirrors the dashboard's HOLIDAY_WINDOWS — update both if the calendar changes.
-const HOLIDAY_WINDOWS = [
-  { n: "Independence Day", from: "2026-08-14", to: "2026-08-16" },
-  { n: "Bonderam (Goa)", from: "2026-08-21", to: "2026-08-23" },
-  { n: "Ganesh Chaturthi", from: "2026-09-12", to: "2026-09-15" },
-  { n: "Gandhi Jayanti", from: "2026-10-02", to: "2026-10-04" },
-  { n: "Diwali", from: "2026-11-06", to: "2026-11-11" },
+// Annual escalation on base AND floor together (v5 policy, 2026-07-30). The
+// dashboard's rawPolicy()/myPrice() both apply this and clamp the lower bound at
+// floor*escFactor(d), so omitting it here made every night drift low by a slowly
+// growing margin (~1.1% at +30 days, ~1.3% at +60).
+function escFactor(d: Date): number {
+  const from = new Date(PP.escalateFrom + "T00:00:00");
+  const yrs = (d.getTime() - from.getTime()) / (365.25 * 864e5);
+  return yrs <= 0 ? 1 : Math.pow(1 + PP.annualEscalation, yrs);
+}
+
+type Holiday = { n: string; from: string; to: string };
+
+// Embedded fallbacks, synced from the ops dashboard on 2026-08-17. These are used
+// when the published dashboard is unreachable OR older than this stamp (see #3).
+const EMBEDDED_AS_OF = "2026-08-19";
+const EMBEDDED_CALIB: Record<string, number> = {
+  // Re-stamped 2026-08-20 from PRICING_SNAPSHOT.calibration.buckets (asOf
+  // 2026-08-19T16:45+05:30). Previous stamp 2026-08-17 was weekday 1.2112 /
+  // weekend 1.1591 / longWeekend 1.0857 — weekday had drifted -1.49% and
+  // longWeekend +1.80%, both past the 1% re-stamp threshold.
+  weekday: 1.1931,
+  weekend: 1.1545,
+  longWeekend: 1.1052,
+};
+const EMBEDDED_HOLIDAYS: Holiday[] = [
+  { n: "Independence Day", from: "2026-08-14", to: "2026-08-15" },
+  { n: "Bonderam (Goa)", from: "2026-08-22", to: "2026-08-22" },
+  { n: "Janmashtami", from: "2026-09-03", to: "2026-09-05" },
+  { n: "Gandhi Jayanti", from: "2026-10-01", to: "2026-10-04" },
+  { n: "Dussehra", from: "2026-10-16", to: "2026-10-19" },
+  { n: "Diwali", from: "2026-11-06", to: "2026-11-08" },
   { n: "St. Francis Xavier (Goa)", from: "2026-12-03", to: "2026-12-06" },
   { n: "Goa Liberation Day", from: "2026-12-18", to: "2026-12-20" },
   { n: "Christmas & New Year", from: "2026-12-24", to: "2027-01-01" },
@@ -46,19 +113,25 @@ const HOLIDAY_WINDOWS = [
 function ymd(d: Date): string {
   return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
 }
-function holidayFor(d: Date) {
+function holidayFor(d: Date, windows: Holiday[]) {
   const s = ymd(d);
-  return HOLIDAY_WINDOWS.find((h) => s >= h.from && s <= h.to);
+  return windows.find((h) => s >= h.from && s <= h.to);
 }
-function priceBucket(d: Date): "longWeekend" | "weekend" | "weekday" {
-  if (holidayFor(d)) return "longWeekend";
+function priceBucket(d: Date, windows: Holiday[]): "longWeekend" | "weekend" | "weekday" {
+  if (holidayFor(d, windows)) return "longWeekend";
   const dow = d.getDay();
   return dow === 5 || dow === 6 ? "weekend" : "weekday";
 }
-function shift(d: Date, n: number): Date {
-  const x = new Date(d);
-  x.setDate(x.getDate() + n);
-  return x;
+
+// Accepts BOTH the plain-number shape ({weekday: 1.2112}) and the legacy object
+// shape ({weekday: {calib: 1.2112}}). This tolerance is the whole point — the
+// original bug was a reader assuming one shape and silently yielding 1.0.
+function readCalib(buckets: any, bucket: string): number | null {
+  if (!buckets) return null;
+  const v = buckets[bucket];
+  if (typeof v === "number" && isFinite(v) && v > 0) return v;
+  if (v && typeof v.calib === "number" && isFinite(v.calib) && v.calib > 0) return v.calib;
+  return null;
 }
 
 // Extracts a balanced {...} object literal starting right after `marker` in `text`,
@@ -88,7 +161,23 @@ function extractObjectLiteral(text: string, marker: string): string | null {
   return null;
 }
 
-async function fetchCalibration(): Promise<{ buckets: Record<string, { calib: number }> | null; asOf: string | null; source: string }> {
+// Parses the dashboard's own HOLIDAY_WINDOWS array so this function never has to
+// maintain a second copy of the holiday calendar. The old "update both if the
+// calendar changes" comment was a manual sync that rotted within weeks.
+function parseHolidayWindows(html: string): Holiday[] | null {
+  const i = html.indexOf("const HOLIDAY_WINDOWS");
+  if (i === -1) return null;
+  const end = html.indexOf("];", i);
+  if (end === -1) return null;
+  const blk = html.slice(i, end);
+  const re = /\{\s*n:\s*'([^']+)'\s*,\s*from:\s*'([^']+)'\s*,\s*to:\s*'([^']+)'/g;
+  const out: Holiday[] = [];
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(blk)) !== null) out.push({ n: m[1], from: m[2], to: m[3] });
+  return out.length ? out : null;
+}
+
+async function fetchDashboard(): Promise<{ buckets: any; windows: Holiday[] | null; asOf: string | null }> {
   try {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 8000);
@@ -99,11 +188,13 @@ async function fetchCalibration(): Promise<{ buckets: Record<string, { calib: nu
     const literal = extractObjectLiteral(html, "const PRICING_SNAPSHOT = ");
     if (!literal) throw new Error("PRICING_SNAPSHOT not found");
     const snapshot = JSON.parse(literal);
-    const buckets = snapshot?.calibration?.buckets;
-    if (!buckets) throw new Error("calibration.buckets missing");
-    return { buckets, asOf: snapshot?.calibration?.history?.length ? snapshot.asOf ?? null : snapshot?.asOf ?? null, source: "live" };
-  } catch (err) {
-    return { buckets: null, asOf: null, source: "fallback (calib ×1.0 — dashboard unreachable)" };
+    return {
+      buckets: snapshot?.calibration?.buckets ?? null,
+      windows: parseHolidayWindows(html),
+      asOf: typeof snapshot?.asOf === "string" ? snapshot.asOf.slice(0, 10) : null,
+    };
+  } catch {
+    return { buckets: null, windows: null, asOf: null };
   }
 }
 
@@ -130,38 +221,45 @@ async function fetchBookedNights(): Promise<Set<string>> {
         : new Date(sd.getTime() + 86400000);
       for (let d = new Date(sd); d < ed; d.setDate(d.getDate() + 1)) booked.add(ymd(d));
     }
-  } catch (err) {
-    // no booking data — orphan-gap discount just won't apply; not fatal.
+  } catch {
+    // no booking data — availability just won't be annotated; not fatal.
   }
   return booked;
 }
 
-function isOrphan(d: Date, booked: Set<string>): boolean {
-  if (booked.size === 0) return false;
-  if (booked.has(ymd(d))) return false;
-  const L1 = booked.has(ymd(shift(d, -1)));
-  const R1 = booked.has(ymd(shift(d, 1)));
-  if (L1 && R1) return true;
-  if (L1 && !R1 && booked.has(ymd(shift(d, 2)))) return true;
-  if (R1 && !L1 && booked.has(ymd(shift(d, -2)))) return true;
-  return false;
-}
-
-function rawPolicy(d: Date, booked: Set<string>): number {
+// Model Recommended = clamp( seasonal_base x night-type x calib, floor, ceiling ).
+// There is deliberately NO orphan term — see header note 5.
+function rawPolicy(d: Date, windows: Holiday[]): number {
   const mult = PP.seasonal[d.getMonth()] ?? 0.55;
-  const seasonalBase = Math.min(Math.max(PP.base * mult, PP.floor), PP.ceiling);
+  const esc = escFactor(d);
+  const seasonalBase = Math.min(Math.max(PP.base * mult * esc, PP.floor * esc), PP.ceiling);
   let p: number;
-  if (holidayFor(d)) p = seasonalBase * PP.longWeekendMult;
+  if (holidayFor(d, windows)) p = seasonalBase * PP.longWeekendMult;
   else if (d.getDay() === 5 || d.getDay() === 6) p = seasonalBase * PP.weekendMult;
   else p = seasonalBase;
-  if (isOrphan(d, booked)) p = p * PP.orphanDiscount;
-  return Math.round(Math.min(Math.max(p, PP.floor), PP.ceiling));
+  return Math.round(Math.min(Math.max(p, PP.floor * esc), PP.ceiling));
 }
 
 export default async (req: Request, context: Context) => {
   try {
-    const [calib, booked] = await Promise.all([fetchCalibration(), fetchBookedNights()]);
-    const buckets = calib.buckets;
+    const [dash, booked] = await Promise.all([fetchDashboard(), fetchBookedNights()]);
+
+    // Use the dashboard only when it is at least as fresh as what we ship. A
+    // published dashboard that is weeks behind must not pull prices down.
+    const dashIsFresh = !!dash.asOf && dash.asOf >= EMBEDDED_AS_OF;
+    const liveCalibUsable =
+      dashIsFresh && ["weekday", "weekend", "longWeekend"].every((b) => readCalib(dash.buckets, b) !== null);
+
+    const calibFor = (bucket: string): number =>
+      (liveCalibUsable ? readCalib(dash.buckets, bucket) : null) ?? EMBEDDED_CALIB[bucket] ?? 1;
+
+    const windows = dashIsFresh && dash.windows ? dash.windows : EMBEDDED_HOLIDAYS;
+
+    const calibrationSource = liveCalibUsable
+      ? "live (dashboard " + dash.asOf + ")"
+      : dash.asOf
+      ? "embedded " + EMBEDDED_AS_OF + " (published dashboard " + dash.asOf + " is older)"
+      : "embedded " + EMBEDDED_AS_OF + " (dashboard unreachable)";
 
     const priceByDate: Record<string, number> = {};
     const today = new Date();
@@ -169,17 +267,28 @@ export default async (req: Request, context: Context) => {
     for (let i = 0; i < DAYS_AHEAD; i++) {
       const d = new Date(today);
       d.setDate(d.getDate() + i);
-      const bucket = priceBucket(d);
-      const calibFactor = buckets && typeof buckets[bucket]?.calib === "number" && buckets[bucket].calib > 0 ? buckets[bucket].calib : 1;
-      const price = Math.round(Math.min(Math.max(rawPolicy(d, booked) * calibFactor, PP.floor), PP.ceiling));
+      const price = Math.round(
+        Math.min(
+          Math.max(rawPolicy(d, windows) * calibFor(priceBucket(d, windows)), PP.floor * escFactor(d)),
+          PP.ceiling
+        )
+      );
       priceByDate[ymd(d)] = price;
     }
 
     return new Response(
       JSON.stringify({
         generatedAt: new Date().toISOString(),
-        calibrationSource: calib.source,
-        calibrationAsOf: calib.asOf,
+        calibrationSource,
+        calibrationAsOf: liveCalibUsable ? dash.asOf : EMBEDDED_AS_OF,
+        holidaySource: dashIsFresh && dash.windows ? "dashboard" : "embedded " + EMBEDDED_AS_OF,
+        calibration: {
+          weekday: calibFor("weekday"),
+          weekend: calibFor("weekend"),
+          longWeekend: calibFor("longWeekend"),
+        },
+        floor: PP.floor,
+        bookedNightsKnown: booked.size,
         priceByDate,
       }),
       {
