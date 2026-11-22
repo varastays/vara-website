@@ -220,6 +220,10 @@
   .day.avail:hover{background:var(--sand)}
   .day.past{color:#cabfad;cursor:not-allowed}
   .day.booked{color:#c3b39c;cursor:not-allowed;text-decoration:line-through}
+  /* 2026-11-22: a booked night can still be the CHECK-OUT day (the next guest arrives that afternoon) */
+  .day.booked.coable{color:var(--dusk);cursor:pointer;text-decoration:none}
+  .day.booked.coable:hover{background:var(--sand)}
+  .day.booked.sel{color:#fff;text-decoration:none}
   .day.inrange{background:rgba(196,96,58,.15);color:var(--terracotta-dk);border-radius:0}
   .day.sel{background:var(--terracotta);color:#fff}
   .day.sel.start{border-radius:9px 0 0 9px}
@@ -933,6 +937,7 @@
   }
 
   function pick(d){
+    if(booked.has(key(d)) && !(ci && !co && d > ci && rangeClear(ci, d))) return; // booked night: check-out only
     if(!ci || co){ ci = d; co = null; }
     else if(d <= ci){ ci = d; co = null; }
     else if(rangeClear(ci, d)){ co = d; }
@@ -953,7 +958,7 @@
       var d = new Date(view.getFullYear(), view.getMonth(), n);
       var cls = 'day', k = key(d);
       if(d < today) cls += ' past';
-      else if(booked.has(k)) cls += ' booked';
+      else if(booked.has(k)){ cls += ' booked'; if(ci && !co && d > ci && rangeClear(ci, d)) cls += ' coable'; }
       else cls += ' avail';
       if(ci && co){
         if(d.getTime()===ci.getTime()) cls += ' sel start';
@@ -1014,7 +1019,7 @@
   }
 
   elGrid.addEventListener('click', function(ev){
-    var cell = ev.target.closest('.day.avail');
+    var cell = ev.target.closest('.day.avail, .day.coable');
     if(!cell) return;
     var p = cell.getAttribute('data-k').split('-');
     pick(new Date(+p[0], +p[1]-1, +p[2]));
